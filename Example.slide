@@ -1,13 +1,13 @@
 Dockerized Go Present Tool
 Sample Presentation
 25 Feb 2015
-Tags: docker, golang, present
+Tags: docker, golang, present, go-present
 
 Michael Boudreau
 
 * Running Direct
 
-	docker run -v /mylocalslides:/app mkboudreau/docker-present 
+	docker run -v /mylocalslides:/app mkboudreau/go-present 
 
 
 * Baking Slides
@@ -15,7 +15,7 @@ Michael Boudreau
 - Put Dockerfile with slide source
 
 	# Dockerfile contents
-	FROM mkboudreau/docker-present:latest-onbuild
+	FROM mkboudreau/go-present:latest-onbuild
 
 - Build/Bake image
 
