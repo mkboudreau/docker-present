@@ -23,4 +23,5 @@ Michael Boudreau
 
 - Run your baked presentation
 
-	docker run <yourrepo>/<yourtag>
+	docker run -d -p 3999:3999 <yourrepo>/<yourtag>
+
