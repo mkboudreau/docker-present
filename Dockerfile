@@ -6,4 +6,6 @@ COPY present-run /run/
 
 EXPOSE 3999
 
+WORKDIR /app
+
 CMD ["/run/present-run"]
