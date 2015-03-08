@@ -7,7 +7,12 @@ This project is a simple Dockerfile that does a `go get` for the present tool an
 ### Running it directly
 
 Run it directly by mounting a volume with the location of your .slide files
-`docker run -v /mylocalslides:/app mkboudreau/go-present`
+`docker run -d -p 3999:3999 -v /mylocalslides:/app mkboudreau/go-present`
+
+If you need to run it on a host that has a different externalized host/ip, then pass you can pass in the environment variable `EXTERNAL_HOST` and it will set the value into the go present tool. 
+
+Running with the EXTERNAL HOST variable
+`docker run -d -p 3999:3999 -v /mylocalslides:/app -e "EXTERNAL_HOST=10.222.1.50" mkboudreau/go-present`
 
 
 ### Baking your presentation
