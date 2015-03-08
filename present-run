@@ -1,0 +1,9 @@
+#!/bin/bash
+
+PRESENT_OPTS="-http=0.0.0.0:3999"
+if [ -n $EXTERNAL_HOST ]; then
+	PRESENT_OPTS="-orighost=$EXTERNAL_HOST $PRESENT_OPTS"
+fi
+
+present $PRESENT_OPTS
+
