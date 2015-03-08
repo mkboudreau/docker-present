@@ -6,4 +6,4 @@ COPY present-run /run/
 
 EXPOSE 3999
 
-CMD ["present-run"]
+CMD ["/run/present-run"]
