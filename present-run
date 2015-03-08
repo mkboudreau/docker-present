@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PRESENT_OPTS="-http=0.0.0.0:3999"
+PRESENT_OPTS="-http=0.0.0.0:3999 -base=/app"
 if [ -n $EXTERNAL_HOST ]; then
 	PRESENT_OPTS="-orighost=$EXTERNAL_HOST $PRESENT_OPTS"
 fi
