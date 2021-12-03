@@ -10,19 +10,21 @@ build:
 build-onbuild:
 	docker build -t go-present:onbuild-just-built -f onbuild.Dockerfile .
 
-push-patch: build
+build-all: build build-onbuild
+	
+push-patch: build-all
 	docker tag go-present:just-built mkboudreau/go-present:$(BUMPED_PATCH)
 	docker tag go-present:onbuild-just-built mkboudreau/go-present:$(BUMPED_PATCH)-onbuild
 	docker push mkboudreau/go-present:$(BUMPED_PATCH) 
 	docker push mkboudreau/go-present:$(BUMPED_PATCH)-onbuild
 
-push-minor: build
+push-minor: build-all
 	docker tag go-present:just-built mkboudreau/go-present:$(BUMPED_MINOR)
 	docker tag go-present:onbuild-just-built mkboudreau/go-present:$(BUMPED_MINOR)-onbuild
 	docker push mkboudreau/go-present:$(BUMPED_MINOR) 
 	docker push mkboudreau/go-present:$(BUMPED_MINOR)-onbuild
 
-push-major: build
+push-major: build-all
 	docker tag go-present:just-built mkboudreau/go-present:$(BUMPED_MAJOR)
 	docker tag go-present:onbuild-just-built mkboudreau/go-present:$(BUMPED_MAJOR)-onbuild
 	docker push mkboudreau/go-present:$(BUMPED_MAJOR) 

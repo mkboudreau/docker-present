@@ -4,7 +4,6 @@ MAINTAINER Michael Boudreau <mkboudreau@yahoo.com>
 ENV GO111MODULE=off
 
 RUN go get golang.org/x/tools/cmd/present
-COPY scripts/present-run /run/
 
 EXPOSE 3999
 
