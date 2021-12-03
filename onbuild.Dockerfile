@@ -12,3 +12,5 @@ WORKDIR /app
 
 ENTRYPOINT ["present"]
 CMD ["-http=0.0.0.0:3999", "-use_playground"]
+
+ONBUILD COPY . /app

@@ -2,6 +2,8 @@
 
 This project is a simple Dockerfile that does a `go get` for the present tool and makes it easy to run the present tool anywhere.
 
+It pulls code from https://github.com/golang/tools/tree/master/present
+
 ## Examples
 
 ### Running it directly
@@ -9,11 +11,19 @@ This project is a simple Dockerfile that does a `go get` for the present tool an
 Run it directly by mounting a volume with the location of your .slide files
 `docker run -d -p 3999:3999 -v /mylocalslides:/app mkboudreau/go-present`
 
-If you need to run it on a host that has a different externalized host/ip, then pass you can pass in the environment variable `EXTERNAL_HOST` and it will set the value into the go present tool. 
+The default command for the present tool that is executed is:
 
-Running with the EXTERNAL HOST variable
-`docker run -d -p 3999:3999 -v /mylocalslides:/app -e "EXTERNAL_HOST=10.222.1.50" mkboudreau/go-present`
+```
+present -http=0.0.0.0:3999 -use_playground
+```
 
+#### Want to have full control?
+
+If you want to have complete control, simply pass any and all options as options to the docker run command: `docker run ... -opt1 -opt2`
+
+**Important**: The `ENTRYPOINT` is just the `present` command. The options are set as the _default_ `CMD` value. Passing any options to the `docker run` command will remove the `-http=0.0.0.0:3999 -use_playground` options since these are the default `CMD` parameters in the `Dockerfile`. Keep that in mind if you decide to customize.
+
+If you are running this in Vagrant, docker-machine, or some other VM, and you want to use the playground in the container (instead of the golang playground), then you may need to add the IP address that is able to be routed back to the container: `-orighost=<Accessible IP Address>`
 
 ### Baking your presentation
 If you'd like to *bake* in your slides and make them really portable, all you have to do is put a Dockerfile alongside your slides. Your Dockerfile only needs one line: `FROM mkboudreau/go-present:latest-onbuild`

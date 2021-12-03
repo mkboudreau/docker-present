@@ -9,7 +9,6 @@ Michael Boudreau
 
 	docker run -v /mylocalslides:/app mkboudreau/go-present 
 
-
 * Baking Slides
 
 - Put Dockerfile with slide source
@@ -24,4 +23,22 @@ Michael Boudreau
 - Run your baked presentation
 
 	docker run -d -p 3999:3999 <yourrepo>/<yourtag>
+
+* Playground with entire file
+
+.play -edit -numbers demo.go
+
+* Play with part of a file
+
+.play -edit demo.go /^func main/,/^}/
+
+* Code view
+
+Full source file 
+
+.code -numbers demo.go
+
+Just the func, with some highlighting
+
+.code -numbers demo.go /^func main/,/^}/ 
 
